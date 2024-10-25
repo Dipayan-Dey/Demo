@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post" id="form">
+        <input type="text" name="name">
+        <input type="number" name="number" id="">
+        <button class="btn" name="btn">
+            Submit
+        </button>
+    </form>
+    <script>
+       let url = 'https://script.google.com/macros/s/AKfycbyOn7YBH4NrLXSWoSfPzlRHfAzodCKAkCiCmDVSpvTR5qdp1VnXl_xjLVNGG1FfJzYQ/exec'
+       let form=document.getElementById('form')
+       form.addEventListener("submit",(e)=>{
+          e.target.btn.innerHTML="Submitting";
+        let data= new FormData(form);
+        fetch(url,{
+            method:"POST",
+            body:data
+        }).then((res)=>res.text())
+
+        .then((FinalRes)=>{
+            alert(FinalRes)
+            form.reset();
+            e.target.btn.innerHTML="Submit";
+        })
+
+       e.preventDefault();
+       })
+    </script>
+</body>
+</html>
